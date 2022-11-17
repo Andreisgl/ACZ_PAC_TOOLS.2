@@ -3,11 +3,14 @@
 
 
 ///ACE COMBAT ZERO: THE BELKAN WAR DATA.PAC EXTRACTOR/REBUILDER
-=============================================================== by death_the_d0g
+by death_the_d0g
+Adaptations by Andrei Segal
 
 About:
 ------
-Extracts the contents of from a DATA.PAC file and dumps them to a folder. Rebuilds a new DATA.PAC and DATA.TBL file from the contents of a DATA folder.
+If run without arguments, extracts the contents of from a DATA.PAC file and dumps them to a folder. Rebuilds a new DATA.PAC and DATA.TBL file from the contents of a DATA folder.
+
+Can also receive arguments for the paths of "DATA.PAC", "DATA.TBL" and "Destination folder", in that order.
 
 
 Requirements:
@@ -31,5 +34,13 @@ BelkanLoyalist (@ Twitter and ModDB) for testing.
 
 Contact:
 --------
-death_the_d0g @ Twitter and ModDB
-Charles Charleston @ Youtube
+death_the_d0g:
+ death_the_d0g @ Twitter and ModDB
+ deaththed0g @ Github
+ Charles Charleston @ Youtube
+
+Andrei Segal:
+ SegalAndrei @ Twitter
+ Andreisgl @ Github
+ Andrei Segal @ Youtube
+

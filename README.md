@@ -10,7 +10,8 @@ About:
 ------
 If run without arguments, extracts the contents of from a DATA.PAC file and dumps them to a folder. Rebuilds a new DATA.PAC and DATA.TBL file from the contents of a DATA folder.
 
-Can also receive arguments for the paths of "DATA.PAC", "DATA.TBL" and "Destination folder", in that order.
+Can also receive arguments for the paths of "DATA.PAC", and "Destination folder", in that order.
+DATA.TBL is detected automatically.
 
 
 Requirements:

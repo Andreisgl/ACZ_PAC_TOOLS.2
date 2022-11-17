@@ -3,9 +3,14 @@ import textwrap
 import os.path
 import shutil
 
+pac_path = "data.pac"
+tbl_path = "data.tbl"
+
+folder_extract_path = "DATA"
+
 def tbl():
     try:
-        tbl_file = open("data.tbl", "rb")
+        tbl_file = open(tbl_path, "rb")
     except FileNotFoundError as x:
         print ()
         print ("///ERROR///: DATA.TBL file not found.")
@@ -20,7 +25,7 @@ def tbl():
 
 def pac():
     try:
-        pac_file = open("data.pac", "rb")
+        pac_file = open(pac_path, "rb")
     except FileNotFoundError as x:
         print ()
         print ("///ERROR///: DATA.PAC file not found.")
@@ -65,11 +70,11 @@ print()
 print(textwrap.fill("Extracts the contents of the DATA.PAC file.", width = 80))
 print()
 
-if os.path.exists("DATA"):
-    shutil.rmtree("DATA")
-    os.mkdir("DATA")
+if os.path.exists(folder_extract_path):
+    shutil.rmtree(folder_extract_path)
+    os.mkdir(folder_extract_path)
 else:
-    os.mkdir("DATA")
+    os.mkdir(folder_extract_path)
 
 tbl_file = tbl()
 pac_file = pac()

@@ -12,7 +12,6 @@ folder_extract_path = "DATA"
 def tbl():
     try:
         tbl_file = open(tbl_path, "rb")
-        tbl_file.close()
     except FileNotFoundError as x:
         print ()
         print ("///ERROR///: DATA.TBL file not found.")
@@ -28,7 +27,6 @@ def tbl():
 def pac():
     try:
         pac_file = open(pac_path, "rb")
-        pac_file.close()
     except FileNotFoundError as x:
         print ()
         print ("///ERROR///: DATA.PAC file not found.")
@@ -68,24 +66,29 @@ def extraction(tbl_file, pac_file):
         f_n = f_n + 1
 
 def get_paths(arg_list):
-    # Gets .PAC, .TBL and Extract Folder paths from command line arguments
+    # Gets .PAC and Extract Folder paths from command line arguments
     global pac_path
     global tbl_path
     global folder_extract_path
     if len(arg_list) == 1: #If no arguments are passed...
         # Use standard values
-        pac_path = "data.pac"
-        tbl_path = "data.tbl"
+        pac_path = "DATA.PAC"
+        tbl_path = "DATA.TBL"
         folder_extract_path = "DATA"
 
-    elif len(arg_list) == 4: # If the right ammount of arguments is passed...
+    elif len(arg_list) == 3: # If the right ammount of arguments is passed...
         #Get values from list
         pac_path = arg_list[1]
-        tbl_path = arg_list[2]
-        folder_extract_path = arg_list[3]
+
+        tbl_path = os.path.splitext(pac_path)[0] + ".TBL"
+        #tbl_path = arg_list[2]
+
+        #folder_extract_path = arg_list[3]
+        folder_extract_path = arg_list[2]
     
     else: #If none of those conditions are met
-        exit(1) # Exit program with an error
+        err_msg = "Wrong parameters!"
+        exit(err_msg) # Exit program with an error
 
     
 
@@ -107,3 +110,6 @@ else:
 tbl_file = tbl()
 pac_file = pac()
 extraction(tbl_file, pac_file)
+
+tbl_file.close()
+pac_file.close()

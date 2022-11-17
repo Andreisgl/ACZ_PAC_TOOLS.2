@@ -12,6 +12,7 @@ folder_extract_path = "DATA"
 def tbl():
     try:
         tbl_file = open(tbl_path, "rb")
+        tbl_file.close()
     except FileNotFoundError as x:
         print ()
         print ("///ERROR///: DATA.TBL file not found.")
@@ -27,6 +28,7 @@ def tbl():
 def pac():
     try:
         pac_file = open(pac_path, "rb")
+        pac_file.close()
     except FileNotFoundError as x:
         print ()
         print ("///ERROR///: DATA.PAC file not found.")
@@ -105,8 +107,3 @@ else:
 tbl_file = tbl()
 pac_file = pac()
 extraction(tbl_file, pac_file)
-tbl_file.close()
-pac_file.close()
-#os.remove("data.pac")
-#os.remove("data.tbl")
-

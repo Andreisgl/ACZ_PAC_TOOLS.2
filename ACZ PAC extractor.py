@@ -2,6 +2,7 @@ import os
 import textwrap
 import os.path
 import shutil
+import sys
 
 pac_path = "data.pac"
 tbl_path = "data.tbl"
@@ -54,7 +55,7 @@ def extraction(tbl_file, pac_file):
         size_list.append(int.from_bytes(tbl_file.read(4), byteorder = "little"))
         f_offset = f_offset + 4
     for f in range(tbl_nof):
-        fname = "DATA//" + str(f_n).zfill(4) + ".dat"
+        fname = folder_extract_path + "\\" + str(f_n).zfill(4) + ".dat"
         file = open(fname, "wb")
         pac_file.seek(offset_list[val])
         data = pac_file.read(size_list[val])
@@ -64,11 +65,36 @@ def extraction(tbl_file, pac_file):
         val = val + 1
         f_n = f_n + 1
 
+def get_paths(arg_list):
+    # Gets .PAC, .TBL and Extract Folder paths from command line arguments
+    global pac_path
+    global tbl_path
+    global folder_extract_path
+    if len(arg_list) == 1: #If no arguments are passed...
+        # Use standard values
+        pac_path = "data.pac"
+        tbl_path = "data.tbl"
+        folder_extract_path = "DATA"
+
+    elif len(arg_list) == 4: # If the right ammount of arguments is passed...
+        #Get values from list
+        pac_path = arg_list[1]
+        tbl_path = arg_list[2]
+        folder_extract_path = arg_list[3]
+    
+    else: #If none of those conditions are met
+        exit(1) # Exit program with an error
+
+    
+
+
 print(textwrap.fill("Ace Combat 5/ZERO DATA.PAC content extractor by death_the_d0g", width = 80))
 print(textwrap.fill("=============================================================", width = 80))
 print()
 print(textwrap.fill("Extracts the contents of the DATA.PAC file.", width = 80))
 print()
+
+get_paths(sys.argv)
 
 if os.path.exists(folder_extract_path):
     shutil.rmtree(folder_extract_path)
